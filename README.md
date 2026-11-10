@@ -2,6 +2,8 @@
 
 A plugin for Hermes Agent that describes the images and videos you come across on any website, so blind and low vision people can follow along. It comes with a small Chrome extension that works in your normal browser, and it reads descriptions through your screen reader or out loud in an AI voice. You decide when it describes something and how much it can spend.
 
+[Watch the demo video](https://x.com/Gabriella_Baris/status/2120115654397137029/video/1)
+
 ## Requirements
 
 You need Hermes (the desktop app or the terminal version), Google Chrome and an OpenRouter key.
