@@ -1,0 +1,8 @@
+[project]
+name = "hermes-blind-accessibility-reader"
+version = "0.2.0"
+description = "Hermes Agent plugin that describes images and videos for blind and low vision people."
+authors = [{ name = "Gabriella Baris" }]
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []

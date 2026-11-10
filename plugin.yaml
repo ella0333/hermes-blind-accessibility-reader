@@ -1,0 +1,81 @@
+name: blind-accessibility-reader
+version: "0.2.0"
+manifest_version: 2
+description: "Blind Accessibility Video and Image Reader. Describes images and videos for blind and low vision people in their own Chrome, through their own screen reader or a voice, using a separate low-cost vision model with the price read out before anything is spent. Includes a Chrome extension."
+author: Gabriella Baris
+license: MIT
+homepage: https://github.com/ella0333/hermes-blind-accessibility-reader
+requires_hermes: ">=0.22.7"
+tags: [accessibility, blind, low-vision, screen-reader, alt-text, video, browser, vision]
+provides_tools:
+  - describe_view
+  - reader_settings
+provides_hooks:
+  - on_session_start
+  - pre_llm_call
+config_schema:
+  enabled:
+    type: bool
+    default: false
+    label: "Describing on"
+    description: "Whether the image and video reader is switched on. It starts again with the next Hermes session when on."
+  mode:
+    type: str
+    default: manual
+    label: "Mode"
+    description: "manual sends nothing until you press describe; auto describes images that have no alt text as you browse."
+  readouts:
+    type: bool
+    default: true
+    label: "Cost readouts"
+    description: "Read the price of each action in every describe prompt before you press it."
+  output:
+    type: str
+    default: screen_reader
+    label: "Output"
+    description: "Where descriptions are read: screen_reader, browser_voice (free) or hermes_voice."
+  captions:
+    type: bool
+    default: false
+    label: "Show captions on screen"
+    description: "Outline each image being described and show descriptions in large text along the bottom of the page, with today's spending."
+  chime:
+    type: bool
+    default: true
+    label: "Play a sound when the outline moves"
+    description: "A soft tone when a new image becomes current, and a lower one for a video, so you know something new is active before it's read."
+  read_titles:
+    type: bool
+    default: false
+    label: "Read captions and titles"
+    description: "Read a post's text, a video's title or an image's existing alt text before describing it. Off by default because screen readers already read these."
+  replace_alt:
+    type: bool
+    default: false
+    label: "Replace existing alt text"
+    description: "Describe images even when the site already gave alt text; the original is kept after the description."
+  vision_model:
+    type: str
+    default: google/gemini-3.1-flash-lite
+    label: "Vision model"
+    description: "The OpenRouter model that describes images and video frames. Change it with /describe model to hear the prices."
+  ceiling:
+    type: float
+    default: 0.5
+    label: "Daily ceiling in dollars"
+    description: "Describing stops for the day once this much has been spent."
+  video_cap:
+    type: float
+    default: 0.05
+    label: "Most to spend on one video, in dollars"
+    description: "Narration of a single video stops once it has cost this much. Set 0 for no limit; the daily ceiling still applies."
+  per_minute:
+    type: int
+    default: 20
+    label: "Descriptions per minute"
+    description: "Most descriptions sent in any one minute."
+  setup_done:
+    type: bool
+    default: false
+    label: "Setup finished"
+    description: "Set after the first-run questions have been answered."
