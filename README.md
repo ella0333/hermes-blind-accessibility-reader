@@ -84,7 +84,7 @@ The plugin runs a small server on your own computer, at 127.0.0.1 port 47823, wh
 
 The extension, which you load yourself, captures the visible tab to crop out the image or video frame you're on, and adds descriptions to the page's alt text.
 
-Images and video frames are shrunk and sent to the vision model set for the plugin, OpenRouter by default, using the key you added to Hermes. If the extension sends an image's address instead of a capture, the plugin downloads the image from that address.
+Images and video frames are shrunk and sent to the vision model set for the plugin, OpenRouter by default, using the key you added to Hermes. When the extension downloads an image to describe it, it does so without your cookies or sign-ins.
 
 The plugin fetches OpenRouter's public model price list, with no key. The AI voice goes through Hermes's own text to speech, using whichever provider Hermes is set to.
 

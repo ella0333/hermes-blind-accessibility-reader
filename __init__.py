@@ -28,6 +28,7 @@ CEILING_CHOICES = [("0.25", "0.25 dollars a day"), ("0.5", "0.50 dollars a day")
 OUTPUT_CHOICES = [("screen_reader", "My screen reader"), ("browser_voice", "The browser voice, free"),
                   ("hermes_voice", "The Hermes voice")]
 OPENROUTER_LIMIT_TIP = "Tip: add an additional spending limit to your OpenRouter key at openrouter.ai."
+AGENT_SETTINGS = ("mode", "readouts", "output", "model", "ceiling")
 
 
 def _extension_steps() -> str:
@@ -184,11 +185,16 @@ def _tool_settings(args: dict, **_: Any) -> str:
         if args.get("action", "get") == "get":
             return json.dumps({"status": _status(), "models": _service.pricing.model_options()})
         key, value = str(args.get("setting")), args.get("value")
-        if key == "model" and _service.pricing.is_expensive(str(value)) and not args.get("confirmed"):
+        if key not in AGENT_SETTINGS:
+            return json.dumps({"error": "That setting can only be changed by the person, in the settings panel "
+                                        "with Alt+Shift+S or with /describe."})
+        if key == "ceiling" and float(value) > float(_service.settings.get("ceiling")):
+            return json.dumps({"error": "The daily ceiling can only be raised by the person, in the settings panel "
+                                        "with Alt+Shift+S or with /describe setup."})
+        if key == "model" and _service.pricing.is_expensive(str(value)):
             high = _service.pricing.hour_range(str(value))[1]
-            return json.dumps({"needs_confirmation": True,
-                               "message": f"{short_name(str(value))} costs up to {money(high)} per hour of busy video. "
-                                          "Ask the person to confirm, then call again with confirmed true."})
+            return json.dumps({"error": f"{short_name(str(value))} costs up to {money(high)} per hour of busy video, "
+                                        "so the person has to switch to it themselves with /describe model."})
         return json.dumps({"message": _service.apply_setting(key, value)})
     except Exception as exc:
         return json.dumps({"error": str(exc)})

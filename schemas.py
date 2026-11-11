@@ -19,17 +19,16 @@ READER_SETTINGS = {
     "description": (
         "Read or change the Blind Accessibility Video and Image Reader settings when the person asks, for "
         "example 'turn on auto mode', 'switch to the cheapest model', 'how much have I spent today'. "
-        "Always read the returned message back to them, since it includes the cost. Settings: enabled "
-        "(true or false), mode (manual or auto), readouts (true or false, cost read in every prompt), output "
+        "Always read the returned message back to them, since it includes the cost. Settings: mode (manual or auto), readouts (true or false, cost read in every prompt), output "
         "(screen_reader, browser_voice or hermes_voice), model (an OpenRouter model id from the get action), "
-        "ceiling (daily dollars). Expensive models need the person's confirmation first."),
+        "ceiling (daily dollars, can only be lowered here). Turning the reader on, raising the ceiling and "
+        "switching to an expensive model are left to the person, in the settings panel or with /describe."),
     "parameters": {
         "type": "object",
         "properties": {
             "action": {"type": "string", "enum": ["get", "set"]},
-            "setting": {"type": "string", "enum": ["enabled", "mode", "readouts", "output", "model", "ceiling"]},
+            "setting": {"type": "string", "enum": ["mode", "readouts", "output", "model", "ceiling"]},
             "value": {"description": "New value for the setting."},
-            "confirmed": {"type": "boolean", "description": "True only after the person confirmed an expensive model."},
         },
         "required": ["action"],
     },

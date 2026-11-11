@@ -1,5 +1,5 @@
 name: blind-accessibility-reader
-version: "0.2.0"
+version: "0.2.1"
 manifest_version: 2
 description: "Blind Accessibility Video and Image Reader. Describes images and videos for blind and low vision people in their own Chrome, through their own screen reader or a voice, using a separate low-cost vision model with the price read out before anything is spent. Includes a Chrome extension."
 author: Gabriella Baris

@@ -46,7 +46,7 @@ async function capture(windowId, rect, dpr, maxSide) {
 async function fetchImage(src) {
   if (!/^https?:/.test(src || "")) { return ""; }
   try {
-    const res = await fetch(src, { credentials: "include" });
+    const res = await fetch(src, { credentials: "omit" });
     if (!res.ok) { return ""; }
     const blob = await res.blob();
     if (blob.size > 12 * 1024 * 1024) { return ""; }

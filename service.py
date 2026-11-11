@@ -126,7 +126,7 @@ class Service:
         ok, msg = self._allowed(self.pricing.image_cost(self.settings.get("model")))
         if not ok:
             return {"error": msg or "Paused by the spending guard."}
-        raw = base64.b64decode(image_b64) if image_b64 else (fetch_image(src) if src else None)
+        raw = base64.b64decode(image_b64) if image_b64 else None
         jpeg = shrink(raw, IMAGE_MAX) if raw else None
         if not jpeg:
             return {"error": "Could not load that image."}

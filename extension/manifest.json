@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Blind Accessibility Video and Image Reader",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Describes images and videos for blind and low vision people through their screen reader, using the Hermes Agent plugin, with the price read before anything is spent.",
   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnmUKWOx9xrcixaEIvsiXperxgH5btWjp0h8fo4Zdg/mRevRGx/OocFbtRhmPPKIISDJArYV6ppD7mfgdv9lXYNikfqiYt5zV7DPhkGGkmcOvpR4dbPPV6tmpz5/dKE+WvGnlcyQdqNL3NDSlZgtOyTIxFKSzksR1B6rfa0bNjPEnmxiVd3bGV+y7Lg3BtyqnR60O5gAPr8R6CHT0Oe8LtV9xqBYg+2vvEOSk4BxIH+5k0LZjvYuijdlOpQuut+0Nr195TRuXfUaPJJoPv7f37QAfSB81bXtSoWASTYUm7d5OT9sReTnwIYjDw3ZV0BSWJgcREJebgqTdVB2bHAk4rwIDAQAB",
   "permissions": [
